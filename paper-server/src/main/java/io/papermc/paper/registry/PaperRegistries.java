@@ -9,6 +9,8 @@ import io.papermc.paper.registry.data.PaperDamageTypeRegistryEntry;
 import io.papermc.paper.registry.data.PaperEnchantmentRegistryEntry;
 import io.papermc.paper.registry.data.PaperGameEventRegistryEntry;
 import io.papermc.paper.registry.data.PaperPaintingVariantRegistryEntry;
+import io.papermc.paper.registry.data.PaperTrimMaterialRegistryEntry;
+import io.papermc.paper.registry.data.PaperTrimPatternRegistryEntry;
 import io.papermc.paper.registry.entry.RegistryEntry;
 import io.papermc.paper.registry.entry.RegistryEntryMeta;
 import io.papermc.paper.registry.tag.TagKey;
@@ -108,8 +110,8 @@ public final class PaperRegistries {
             // data-driven
             start(Registries.BIOME, RegistryKey.BIOME).craft(Biome.class, CraftBiome::new).build().delayed(),
             start(Registries.STRUCTURE, RegistryKey.STRUCTURE).craft(Structure.class, CraftStructure::new).build().delayed(),
-            start(Registries.TRIM_MATERIAL, RegistryKey.TRIM_MATERIAL).craft(TrimMaterial.class, CraftTrimMaterial::new, true).build().delayed(),
-            start(Registries.TRIM_PATTERN, RegistryKey.TRIM_PATTERN).craft(TrimPattern.class, CraftTrimPattern::new, true).build().delayed(),
+            start(Registries.TRIM_MATERIAL, RegistryKey.TRIM_MATERIAL).craft(TrimMaterial.class, CraftTrimMaterial::new, true).writable(PaperTrimMaterialRegistryEntry.PaperBuilder::new).delayed(),
+            start(Registries.TRIM_PATTERN, RegistryKey.TRIM_PATTERN).craft(TrimPattern.class, CraftTrimPattern::new, true).writable(PaperTrimPatternRegistryEntry.PaperBuilder::new).delayed(),
             start(Registries.DAMAGE_TYPE, RegistryKey.DAMAGE_TYPE).craft(DamageType.class, CraftDamageType::new).writable(PaperDamageTypeRegistryEntry.PaperBuilder::new).delayed(),
             start(Registries.WOLF_VARIANT, RegistryKey.WOLF_VARIANT).craft(Wolf.Variant.class, CraftWolf.CraftVariant::new).build().delayed(),
             start(Registries.WOLF_SOUND_VARIANT, RegistryKey.WOLF_SOUND_VARIANT).craft(Wolf.SoundVariant.class, CraftWolf.CraftSoundVariant::new).build(),
